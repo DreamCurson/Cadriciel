@@ -1,17 +1,17 @@
 @extends('layout.layout')
-@section('title', 'Ajouter un élève')
+@section('title', __('lang.student_add'))
 @section('content')
 
 <h1 class="mb-4 text-center fw-bold" style="color: #7B68EE;">
-    Ajouter un élève
+    @lang('lang.student_add')
 </h1>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-5">
     <div class="col-12 col-md-8">
         <div class="card shadow-lg rounded-4" style="background-color: #E6E6FA;">
             
             <div class="card-header fs-5 fw-bold text-white" style="background-color: #7B68EE;">
-                Nouvel(le) élève
+                @lang('lang.student_add_title')
             </div>
 
             <div class="card-body">
@@ -19,7 +19,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="name" class="form-label fw-semibold">Nom</label>
+                        <label for="name" class="form-label fw-semibold">@lang('lang.student_edit_name')</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                         @if($errors->has('name'))
                             <div class="text-danger mt-2">{{ $errors->first('name') }}</div>
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="address" class="form-label fw-semibold">Adresse</label>
+                        <label for="address" class="form-label fw-semibold">@lang('lang.student_list_address')</label>
                         <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
                         @if($errors->has('address'))
                             <div class="text-danger mt-2">{{ $errors->first('address') }}</div>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone" class="form-label fw-semibold">Numéro de téléphone</label>
+                        <label for="phone" class="form-label fw-semibold">@lang('lang.student_list_phone')</label>
                         <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
                         @if($errors->has('phone'))
                             <div class="text-danger mt-2">{{ $errors->first('phone') }}</div>
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label fw-semibold">Adresse courriel</label>
+                        <label for="email" class="form-label fw-semibold">@lang('lang.student_list_email')</label>
                         <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
                         @if($errors->has('email'))
                             <div class="text-danger mt-2">{{ $errors->first('email') }}</div>
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="birth" class="form-label fw-semibold">Date de naissance</label>
+                        <label for="birth" class="form-label fw-semibold">@lang('lang.student_list_birthdate')</label>
                         <input type="date" class="form-control" id="birth" name="birth" value="{{ old('birth') }}">
                         @if($errors->has('birth'))
                             <div class="text-danger mt-2">{{ $errors->first('birth') }}</div>
@@ -59,9 +59,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="country_id" class="form-label fw-semibold">Pays de résidence</label>
+                        <label for="country_id" class="form-label fw-semibold">@lang('lang.student_edit_country')</label>
                         <select name="country_id" id="country_id" class="form-select">
-                            <option value="">Sélectionner un pays</option>
+                            <option value="">@lang('lang.student_add_select')</option>
                             @foreach($country as $c)
                                 <option value="{{ $c->id }}" {{ old('country_id') == $c->id ? 'selected' : '' }}>
                                     {{ $c->name }}
@@ -78,7 +78,7 @@
                             style="background-color: #7B68EE;"
                             onmouseover="this.style.backgroundColor='#6A5ACD';"
                             onmouseout="this.style.backgroundColor='#7B68EE';">
-                        Enregistrer
+                        @lang('lang.student_edit_button')
                     </button>
                 </form>
             </div>

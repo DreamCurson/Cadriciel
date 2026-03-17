@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
             'birth' => $this->faker->date,
-            'country_id' => Country::factory()
+            'country_id' => Country::inRandomOrder()->value('id'),
         ];
     }
 }

@@ -39,23 +39,21 @@ class StudentController extends Controller
             'email' => 'required|email',
             'birth' => 'required|date',
             'country_id' => 'required|integer',
-        ],
-        [
-            'name.required' => 'Le nom est obligatoire.',
-            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+        ], [
+            'name.required' => __('validation.name_required'),
+            'name.max' => __('validation.name_max'),
 
-            'address.required' => 'L’adresse est obligatoire.',
+            'address.required' => __('validation.address_required'),
+            'phone.required' => __('validation.phone_required'),
 
-            'phone.required' => 'Le numéro de téléphone est obligatoire.',
+            'email.required' => __('validation.email_required'),
+            'email.email' => __('validation.email_email'),
 
-            'email.required' => 'L’email est obligatoire.',
-            'email.email' => 'Veuillez entrer une adresse email valide.',
+            'birth.required' => __('validation.birth_required'),
+            'birth.date' => __('validation.birth_date'),
 
-            'birth.required' => 'La date de naissance est obligatoire.',
-            'birth.date' => 'La date de naissance doit être une date valide.',
-
-            'country_id.required' => 'Veuillez sélectionner un pays.',
-            'country_id.integer' => 'Le pays sélectionné est invalide.',
+            'country_id.required' => __('validation.country_id_required'),
+            'country_id.integer' => __('validation.country_id_integer'),
         ]);
 
 
@@ -68,7 +66,7 @@ class StudentController extends Controller
             'country_id' => $request->country_id,
         ]);
 
-        return redirect()->route('student.show', $student->id)->with('success', 'Nouvel(le) élève ajouté avec succès!');
+        return redirect()->route('student.show', $student->id)->with('success', __('lang.success_add_student'));
     }
 
     /**
@@ -93,30 +91,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-         $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'birth' => 'required|date',
             'country_id' => 'required|integer',
-        ],
-        [
-            'name.required' => 'Le nom est obligatoire.',
-            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+        ], [
+            'name.required' => __('validation.name_required'),
+            'name.max' => __('validation.name_max'),
 
-            'address.required' => 'L’adresse est obligatoire.',
+            'address.required' => __('validation.address_required'),
+            'phone.required' => __('validation.phone_required'),
 
-            'phone.required' => 'Le numéro de téléphone est obligatoire.',
+            'email.required' => __('validation.email_required'),
+            'email.email' => __('validation.email_email'),
 
-            'email.required' => 'L’email est obligatoire.',
-            'email.email' => 'Veuillez entrer une adresse email valide.',
+            'birth.required' => __('validation.birth_required'),
+            'birth.date' => __('validation.birth_date'),
 
-            'birth.required' => 'La date de naissance est obligatoire.',
-            'birth.date' => 'La date de naissance doit être une date valide.',
-
-            'country_id.required' => 'Veuillez sélectionner un pays.',
-            'country_id.integer' => 'Le pays sélectionné est invalide.',
+            'country_id.required' => __('validation.country_id_required'),
+            'country_id.integer' => __('validation.country_id_integer'),
         ]);
 
         $student->update([
@@ -128,7 +124,7 @@ class StudentController extends Controller
             'country_id' => $request->country_id,
         ]);
 
-       return redirect()->route('student.show', $student->id)->with('success', 'Élève modifié');
+       return redirect()->route('student.show', $student->id)->with('success', __('lang.success_edit_student'));
     }
 
     /**
@@ -137,6 +133,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        return redirect()->route('student.index')->withSuccess('Élève supprimé avec succès');
+        return redirect()->route('student.index')->withSuccess(__('lang.success_delete_student'));
     }
 }
